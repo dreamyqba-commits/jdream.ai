@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Design tokens — Jdream.ai
+   Source of truth: brand.config.ts → compiled to CSS vars here.
+   Light theme is default; dark activates via .dark on <html>.
+   ============================================================ */
+
+:root {
+  /* Backgrounds */
+  --color-background: #ffffff;
+  --color-elevated: #f5f5f7;
+  --color-surface: #fafafa;
+  --color-overlay: #00000066;
+
+  /* Borders */
+  --color-hairline: #e5e5ea;
+  --color-separator: #d2d2d7;
+
+  /* Text */
+  --color-foreground: #1d1d1f;
+  --color-secondary: #6e6e73;
+  --color-muted: #86868b;
+  --color-placeholder: #aeaeb2;
+  --color-disabled: #c7c7cc;
+
+  /* Brand — appears only on: primary CTA / key text links / focus ring */
+  --color-brand: #0071e3;
+  --color-brand-hover: #0077ed;
+  --color-brand-pressed: #006edb;
+  --color-brand-subtle: #0071e314;
+
+  /* Semantic */
+  --color-success: #34c759;
+  --color-success-subtle: #34c75920;
+  --color-warning: #ff9500;
+  --color-warning-subtle: #ff950020;
+  --color-danger: #ff3b30;
+  --color-danger-subtle: #ff3b3020;
+}
+
+:root.dark {
+  /* Backgrounds */
+  --color-background: #000000;
+  --color-elevated: #1c1c1e;
+  --color-surface: #2c2c2e;
+  --color-overlay: #00000099;
+
+  /* Borders */
+  --color-hairline: #38383a;
+  --color-separator: #48484a;
+
+  /* Text */
+  --color-foreground: #f5f5f7;
+  --color-secondary: #ebebf5cc;
+  --color-muted: #ebebf599;
+  --color-placeholder: #ebebf54d;
+  --color-disabled: #ebebf52e;
+
+  /* Brand */
+  --color-brand: #0a84ff;
+  --color-brand-hover: #409cff;
+  --color-brand-pressed: #0071e3;
+  --color-brand-subtle: #0a84ff1a;
+
+  /* Semantic */
+  --color-success: #30d158;
+  --color-success-subtle: #30d15820;
+  --color-warning: #ff9f0a;
+  --color-warning-subtle: #ff9f0a20;
+  --color-danger: #ff453a;
+  --color-danger-subtle: #ff453a20;
+}
+
+/* ============================================================
+   Base styles
+   ============================================================ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-color: var(--color-hairline);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+      "SF Pro Text", "Helvetica Neue", "Segoe UI", system-ui, Roboto,
+      sans-serif;
+    font-size: 17px;
+    line-height: 1.47;
+  }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ============================================================
+   Utility: monospace accent
+   Apply .font-mono to: model IDs, credits count, timestamps,
+   prompt labels, price decimals — and nowhere else.
+   ============================================================ */
+
+@layer utilities {
+  .font-mono {
+    font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", Menlo,
+      Consolas, monospace;
+  }
+
+  /* Focus ring — brand color only */
+  .focus-ring {
+    @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-background;
+  }
+}

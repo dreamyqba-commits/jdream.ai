@@ -1,0 +1,30 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "Literal[value=/^#[0-9a-fA-F]{3,8}$/]",
+        "message": "Hardcoded hex colors are forbidden. Use a CSS variable (var(--color-*)) or a Tailwind token from brand.config.ts instead."
+      },
+      {
+        "selector": "TemplateElement[value.raw=/^#[0-9a-fA-F]{3,8}$/]",
+        "message": "Hardcoded hex colors are forbidden. Use a CSS variable (var(--color-*)) or a Tailwind token from brand.config.ts instead."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["brand.config.ts"],
+      "rules": {
+        "no-restricted-syntax": "off"
+      }
+    },
+    {
+      "files": ["app/globals.css"],
+      "rules": {
+        "no-restricted-syntax": "off"
+      }
+    }
+  ]
+}

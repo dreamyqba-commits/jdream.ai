@@ -48,12 +48,14 @@ export default function GeneratePage() {
 
   // Poll generation status
   useEffect(() => {
-    if (!generation || generation.status === "completed" || generation.status === "failed") {
+    const id = generation?.id;
+    const status = generation?.status;
+    if (!id || status === "completed" || status === "failed") {
       if (pollRef.current) clearInterval(pollRef.current);
       return;
     }
     pollRef.current = setInterval(async () => {
-      const res = await fetch(`/api/status/${generation.id}`);
+      const res = await fetch(`/api/status/${id}`);
       if (!res.ok) return;
       const data = await res.json();
       setGeneration((prev) =>

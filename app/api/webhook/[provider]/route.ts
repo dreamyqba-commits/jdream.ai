@@ -20,7 +20,7 @@ export async function POST(
   const event = provider.parseWebhook(body);
 
   // Ignore events we can't map
-  if (!event.jobId) {
+  if (!event || !event.jobId) {
     return NextResponse.json({ ok: true });
   }
 

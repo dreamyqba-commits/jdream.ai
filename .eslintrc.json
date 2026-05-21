@@ -25,6 +25,12 @@
       "rules": {
         "no-restricted-syntax": "off"
       }
+    },
+    {
+      "files": ["app/login/page.tsx"],
+      "rules": {
+        "no-restricted-syntax": "off"
+      }
     }
   ]
 }

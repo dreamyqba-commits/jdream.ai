@@ -29,7 +29,7 @@
     "@radix-ui/react-accordion": "^1.2.3",
     "lucide-react": "^0.475.0",
     "zod": "^3.24.2",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "gray-matter": "^4.0.3"
   },
   "devDependencies": {
